@@ -4,11 +4,13 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <>
-      <Header />
-      <Outlet />
-      <Footer />
-    </>
+    <div className="flex justify-center">
+      <div className="w-[1024px]">
+        <Header />
+        <Outlet />
+        <Footer />
+      </div>
+    </div>
   );
 }
 
