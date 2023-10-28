@@ -9,6 +9,7 @@ import Register from "./pages/Register.tsx";
 import Login from "./pages/Login.tsx";
 import Single from "./pages/Single.tsx";
 import Write from "./pages/Write.tsx";
+import Toast from "./components/Toast.tsx";
 
 const router = createBrowserRouter([
   {
@@ -42,5 +43,6 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <RouterProvider router={router} />
+    <Toast />
   </React.StrictMode>
 );
