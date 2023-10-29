@@ -20,13 +20,10 @@ const Register = () => {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
-      await axios.post(
-        "http://localhost:8000/api/auth/register",
-        inputs
-      );
-      toast.success("Successfully registered!")
-      navigate('/login')
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      await axios.post("http://localhost:8000/api/auth/register", inputs);
+      toast.success("Successfully registered!");
+      navigate("/login");
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setError(err.response.data);
     }
@@ -69,7 +66,9 @@ const Register = () => {
         >
           Register
         </button>
-        {error && <p className="text-center text-red-700 font-medium">Error: {error}</p>}
+        {error && (
+          <p className="text-center text-red-700 font-medium">Error: {error}</p>
+        )}
         <p className="text-[14px]">
           Do you have an account?{" "}
           <span className="text-pink-700 font-medium">
