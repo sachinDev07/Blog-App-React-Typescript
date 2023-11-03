@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { toast } from "react-toastify";
+import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
   const [error, setError] = useState(null);
@@ -10,18 +10,18 @@ const Login = () => {
     password: "",
   });
 
+  const { login } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8000/api/auth/login", inputs, {
-        withCredentials: true,
-      });
+      login(inputs);
       toast.success("Successfully login");
       navigate("/");
       // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import Logo from "../assets/logo.png";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 const Header = () => {
+  const { currentUser, logout } = useContext(AuthContext);
+
   return (
     <div className="">
       <div className="py-[10px] flex items-center justify-between">
@@ -29,18 +33,18 @@ const Header = () => {
           <Link to="/?cat=food">
             <h6 className="text-base font-light">FOOD</h6>
           </Link>
-          {/* <span>{currentUser?.username}</span>
+          <span>{currentUser?.username}</span>
           {currentUser ? (
-            <span onClick={logout}>Logout</span>
+            <span onClick={logout} className="cursor-pointer">
+              Logout
+            </span>
           ) : (
-            <Link className="link" to="/login">
+            <Link className="text-base font-light" to="/login">
               Login
             </Link>
-          )} */}
+          )}
           <span className="bg-[#b9e7e7] w-[50px] h-[50px] rounded-[50%] flex items-center justify-center font-light border-[1px] border-white hover:text-teal-700 hover:bg-white hover:border-teal-900">
-            <Link to="/write">
-              Write
-            </Link>
+            <Link to="/write">Write</Link>
           </span>
         </div>
       </div>
